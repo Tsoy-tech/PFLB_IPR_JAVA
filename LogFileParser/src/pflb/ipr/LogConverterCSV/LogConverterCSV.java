@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 
 public class LogConverterCSV {
     /*Regex Pattern*/
-    String date = "^(\\d{1,2}\\.\\d{2}\\.\\d{4})\\h";
+    String date = "^(\\d{2}\\.\\d{2}\\.\\d{4})\\h";
     String time = "(\\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\h";
     String TAG = "(\\D*:)\\h?";
     String IPnPort = "(\\d*?\\.?\\d*?\\.?\\d*?\\.?\\d*?:?\\d*?\\.?[\\w])?\\h";
@@ -47,25 +47,28 @@ public class LogConverterCSV {
                             {
                                 if(matcher.group(4) != null)
                                 {
-                                bufferedWriter.write(matcher.group(1) + delimeter +
+                                    bufferedWriter.write(matcher.group(1) + delimeter +
                                         matcher.group(2) + delimeter +
                                         matcher.group(3) + delimeter +
                                         matcher.group(4) + delimeter +
                                         matcher.group(5) + '\n');
-                                }
-                                else
+
+                                    bufferedWriter.flush();
+
+                                } else
                                 {
                                     bufferedWriter.write(matcher.group(1) + delimeter +
                                             matcher.group(2) + delimeter +
                                             matcher.group(3) + delimeter +
                                             matcher.group(5) + '\n');
+
+                                    bufferedWriter.flush();
                                 }
                             }
                         }
                     }
                 }catch (IOException exception) { exception.printStackTrace(); }
             }
-
         } catch (IOException e) { e.printStackTrace(); }
     }
 }

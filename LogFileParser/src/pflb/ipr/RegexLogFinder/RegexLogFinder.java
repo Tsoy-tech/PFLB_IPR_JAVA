@@ -33,6 +33,7 @@ public class RegexLogFinder {
 
                             if (pattern.matcher(log).find()) {
                                 bufferedWriter.write(log + '\n');
+
                                 bufferedWriter.flush();
                             }
                         }

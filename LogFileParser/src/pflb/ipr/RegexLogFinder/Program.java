@@ -11,7 +11,7 @@ public class Program {
             return;
         }*/
 
-        RegexLogFinder.writeRegexLog("^.*INFO.*", "B:\\Log", "B:\\Log\\newlog.log");
+        RegexLogFinder.writeRegexLog("^.*INFO.*", "B:\\Log", "newlog.log");
 
         //RegexLogFinder.writeRegexLog(args[0], args[1], args[2]);
     }

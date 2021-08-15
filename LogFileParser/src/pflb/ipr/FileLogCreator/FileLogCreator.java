@@ -44,9 +44,8 @@ public class FileLogCreator {
 
     }
 
-
     private int linesCount() {
-        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get("B:\\main.log.2014-11-17"), StandardCharsets.ISO_8859_1)) {
+        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileFrom), StandardCharsets.ISO_8859_1)) {
             while (bufferedReader.readLine() != null) {
                 logLinesCount++;
             }

@@ -13,7 +13,8 @@ public class Program {
         }*/
 
         LogConverterCSV converterCSV = new LogConverterCSV();
+        //converterCSV.CreateLogCSV(args[0], args[1], args[2]);
 
-        converterCSV.CreateLogCSV(";", "B:\\Log", "B:\\Log\\logCsv");
+        converterCSV.CreateLogCSV(";", "B:\\Log", "log");
     }
 }
