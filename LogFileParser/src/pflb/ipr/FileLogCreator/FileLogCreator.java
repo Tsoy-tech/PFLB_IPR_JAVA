@@ -1,5 +1,6 @@
 package pflb.ipr.FileLogCreator;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -27,10 +28,12 @@ public class FileLogCreator {
         System.out.println("Files per log: " + linesPerLogCount);
         try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileFrom), StandardCharsets.ISO_8859_1)) {
             for (int i = 1; i <= fileCount; i++) {
-                try (BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(fileTo + i + ".log"), StandardCharsets.ISO_8859_1)) {
+                try (BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(fileTo + i + ".log"))) {
                     int currentLine = 0;
-                    while (bufferedReader.read() != -1) {
-                        bufferedWriter.write(bufferedReader.readLine() + '\n');
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        bufferedWriter.write(line + '\n');
+                        bufferedWriter.flush();
                         currentLine++;
 
                         if (currentLine == linesPerLogCount)

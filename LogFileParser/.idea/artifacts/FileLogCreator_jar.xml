@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FileLogCreator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FileLogCreator_jar</output-path>
+    <root id="archive" name="FileLogCreator.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/Manifests/FileLogCreatorMF/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="LogFileParser" />
+    </root>
+  </artifact>
+</component>
