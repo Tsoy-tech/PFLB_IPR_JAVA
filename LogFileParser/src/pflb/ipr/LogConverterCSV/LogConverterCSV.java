@@ -3,6 +3,7 @@ package pflb.ipr.LogConverterCSV;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,12 +29,16 @@ public class LogConverterCSV {
 
             for(Path file : files)
             {*/
-                try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(logFilePath), StandardCharsets.ISO_8859_1))
+                try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(logFilePath), Charset.forName("ISO-8859-1")))
                 {
-                    try (BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(outputFileCSV + ".csv"), StandardCharsets.ISO_8859_1))
+                    try (BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(outputFileCSV + ".csv"), Charset.forName("ISO-8859-1")))
                     {
                         while ((log = bufferedReader.readLine()) != null)
                         {
+                            if(log.contains(delimeter)){
+                                log = log.replace(delimeter.charAt(0), ' ');
+                            }
+
                             matcher = pattern.matcher(log);
 
                             if(matcher.find())

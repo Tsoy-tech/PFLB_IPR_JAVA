@@ -3,6 +3,7 @@ package pflb.ipr.RegexLogFinder;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,8 +24,8 @@ public class RegexLogFinder {
 
             for(Path file : files)
             {
-                try (BufferedReader bufferedReader = Files.newBufferedReader(file, StandardCharsets.ISO_8859_1)) {
-                    try (BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(outputFileLog), StandardCharsets.ISO_8859_1)) {
+                try (BufferedReader bufferedReader = Files.newBufferedReader(file, Charset.forName("ISO-8859-1"))) {
+                    try (BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(outputFileLog), Charset.forName("ISO-8859-1"))) {
                         String log;
 
                         while ((log = bufferedReader.readLine()) != null) {

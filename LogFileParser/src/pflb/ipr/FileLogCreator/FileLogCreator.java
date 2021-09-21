@@ -4,6 +4,7 @@ package pflb.ipr.FileLogCreator;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,7 +27,7 @@ public class FileLogCreator {
     public void writeNewFile() {
         linesPerLogCount = linesCount();
         System.out.println("Files per log: " + linesPerLogCount);
-        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileFrom), StandardCharsets.ISO_8859_1)) {
+        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileFrom), Charset.forName("ISO-8859-1"))) {
             for (int i = 1; i <= fileCount; i++) {
                 try (BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(fileTo + i + ".log"))) {
                     int currentLine = 0;
@@ -48,7 +49,7 @@ public class FileLogCreator {
     }
 
     private int linesCount() {
-        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileFrom), StandardCharsets.ISO_8859_1)) {
+        try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileFrom), Charset.forName("ISO-8859-1"))) {
             while (bufferedReader.readLine() != null) {
                 logLinesCount++;
             }
